@@ -22,7 +22,7 @@ ErrorDocument 403 forb.html
 ErrorDocument 404 error.html
 
 //Custom 500 errors
-ErrorDocument 500 error.html
+ErrorDocument 500 int.html
 
 //Prevent viewing of .htaccess file
 <Files .htaccess>
