@@ -1,0 +1,34 @@
+//Rewrite to www
+Options +FollowSymLinks
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^avi.mygamesonline.org[nc]
+RewriteRule ^(.*)$ http://www.avi.mygamesonline.org/$1 [r=301,nc]
+
+//301 Redirect Old File
+Redirect 301 contact.asp contact.php
+
+//301 Redirect Entire Directory
+RedirectMatch 301 article(.*) blog/$1
+
+//Caching schema
+<FilesMatch "\.(jpg|png|svg|js|css|jpeg|gif|woff|woff2)$">
+Header set Cache-Control "max-age=2592000"
+</FilesMatch>
+
+//Custom 403 errors
+ErrorDocument 403 forb.html
+
+//Custom 404 errors
+ErrorDocument 404 error.html
+
+//Custom 500 errors
+ErrorDocument 500 error.html
+
+//Prevent viewing of .htaccess file
+<Files .htaccess>
+order allow,deny
+deny from all
+</Files>
+
+//Prevent directory listings
+Options All -Indexes
